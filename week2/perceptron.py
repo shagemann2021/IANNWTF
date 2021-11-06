@@ -15,11 +15,11 @@ class Perceptron():
     # forward step function
     # calculates the activation of the perceptron
     def forward_step(self, inputs):
-        self.raw = np.concatenate((inputs, np.array([1])))
+        self.raw = np.concatenate((inputs, np.array([self.bias])))
         self.sum_inputs = np.sum(self.raw @ self.weights)
         self.out = u.sigmoid(self.sum_inputs)
         return self.out
 
     # function to update the parameters
     def update(self, delta):
-        self.weights -= alpha*delta*self.raw
+        self.weights -= self.alpha*delta*self.raw
